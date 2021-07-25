@@ -1,9 +1,13 @@
 import React from "react";
+import Sidebar from "./Sidebar";
+
+import styles from "App.module.css";
 
 function App() {
     return (
         <div>
-            <h1>Hello</h1>
+            <Sidebar />
+            <div className={styles.content}>Hi</div>
         </div>
     );
 }
