@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { observer } from "mobx-react";
+import { useStore } from "store";
 
 import styles from "Sidebar/Search.module.css";
 
 function Search() {
-    const [search, setSearch] = useState("");
+    const {
+        uiState: { search, setSearch },
+    } = useStore();
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
         setSearch(e.target.value);
@@ -24,4 +28,4 @@ function Search() {
     );
 }
 
-export default Search;
+export default observer(Search);

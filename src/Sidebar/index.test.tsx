@@ -2,22 +2,26 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import Search from "Sidebar/Search";
+import Sidebar from "Sidebar";
+import storageMock from "utils/storageMock";
 import { RootProvider } from "store";
 import RootStore from "store/RootStore";
 
-describe("Search", () => {
-    test("Does search change correctly", () => {
+describe("Sidebar", () => {
+    beforeAll(() => {
+        storageMock();
+    });
+
+    test("should filter note list by search", () => {
         const rootStore = new RootStore();
 
         render(
             <RootProvider value={rootStore}>
-                <Search />
+                <Sidebar />
             </RootProvider>
         );
-        const search = screen.getByPlaceholderText(/검색/);
 
-        userEvent.type(search, "Search test");
-        expect(search).toHaveValue("Search test");
+        userEvent.type(screen.getByPlaceholderText(/검색/), "Hello");
+        expect(screen.getAllByText(/Hello/)).toHaveLength(2);
     });
 });

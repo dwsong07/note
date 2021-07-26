@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 import { useStore } from "store";
 import NoteItem from "./NoteItem";
 
@@ -16,4 +17,4 @@ function NoteList() {
     );
 }
 
-export default NoteList;
+export default observer(NoteList);

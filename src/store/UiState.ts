@@ -10,9 +10,9 @@ class UiState {
         this.root = root;
     }
 
-    setSearch(search: string) {
+    setSearch = (search: string) => {
         this.search = search;
-    }
+    };
 }
 
 export default UiState;
