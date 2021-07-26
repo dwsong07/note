@@ -24,30 +24,32 @@ function Editor() {
     return (
         <form onSubmit={onFormSubmit} className={styles.Editor}>
             <table>
-                <tr className={styles.title}>
-                    <td>
-                        <label htmlFor="title">제목: </label>
-                    </td>
-                    <td>
-                        <input
-                            value={title}
-                            onChange={onTitleChange}
-                            id="title"
-                        />
-                    </td>
-                </tr>
-                <tr className={styles.content}>
-                    <td>
-                        <label htmlFor="content">내용: </label>
-                    </td>
-                    <td>
-                        <textarea
-                            value={content}
-                            onChange={onContentChange}
-                            id="content"
-                        ></textarea>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr className={styles.title}>
+                        <td>
+                            <label htmlFor="title">제목: </label>
+                        </td>
+                        <td>
+                            <input
+                                value={title}
+                                onChange={onTitleChange}
+                                id="title"
+                            />
+                        </td>
+                    </tr>
+                    <tr className={styles.content}>
+                        <td>
+                            <label htmlFor="content">내용: </label>
+                        </td>
+                        <td>
+                            <textarea
+                                value={content}
+                                onChange={onContentChange}
+                                id="content"
+                            ></textarea>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <button type="submit" className={styles.submit}>
                 저장
