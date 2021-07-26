@@ -1,0 +1,8 @@
+.Search {
+    display: block;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--oc-gray-4);
+    border-radius: 4px;
+    margin: 10px;
+}
