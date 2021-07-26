@@ -1,16 +1,22 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import Editor from "Editor";
+import { RootProvider } from "store";
+import RootStore from "store/RootStore";
 
 import styles from "App.module.css";
-import Editor from "Editor";
+
+const rootStore = new RootStore();
 
 function App() {
     return (
         <div>
-            <Sidebar />
-            <div className={styles.content}>
-                <Editor />
-            </div>
+            <RootProvider value={rootStore}>
+                <Sidebar />
+                <div className={styles.content}>
+                    <Editor />
+                </div>
+            </RootProvider>
         </div>
     );
 }

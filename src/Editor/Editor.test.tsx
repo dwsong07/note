@@ -13,21 +13,21 @@ describe("Editor", () => {
         return { input, textarea, submit };
     };
 
-    test("Does Title input correctly change", () => {
+    test("should change title input", () => {
         const { input } = setupTest();
 
         userEvent.type(input, "asdf");
         expect(input).toHaveValue("asdf");
     });
 
-    test("Does Content textarea correctly change", () => {
+    test("should change content textarea", () => {
         const { textarea } = setupTest();
 
         userEvent.type(textarea, "content test");
         expect(textarea).toHaveValue("content test");
     });
 
-    test("Does it save in localstorage", () => {
+    test("should save in localstorage", () => {
         const { input, textarea, submit } = setupTest();
 
         jest.spyOn(window.localStorage.__proto__, "setItem");
