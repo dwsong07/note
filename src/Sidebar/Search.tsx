@@ -8,13 +8,19 @@ function Search() {
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
         setSearch(e.target.value);
 
+    const onSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+    };
+
     return (
-        <input
-            className={styles.Search}
-            placeholder="검색"
-            value={search}
-            onChange={onSearchChange}
-        />
+        <form onSubmit={onSubmit}>
+            <input
+                className={styles.Search}
+                placeholder="검색"
+                value={search}
+                onChange={onSearchChange}
+            />
+        </form>
     );
 }
 
