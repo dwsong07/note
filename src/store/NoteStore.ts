@@ -24,6 +24,20 @@ class NoteStore {
 
         return this.notes.filter((note) => new RegExp(search).test(note.title));
     }
+
+    addNote = (title: string, content: string) => {
+        const id = this.notes.length;
+
+        this.notes.push(new Note(id, title, content));
+        localStorage.setItem(
+            id.toString(),
+            JSON.stringify({
+                title,
+                content,
+                id,
+            })
+        );
+    };
 }
 
 export default NoteStore;

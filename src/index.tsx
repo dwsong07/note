@@ -3,10 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import RootStore from "store/RootStore";
+import { RootProvider } from "store";
+
+const rootStore = new RootStore();
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <RootProvider value={rootStore}>
+            <App />
+        </RootProvider>
     </React.StrictMode>,
     document.getElementById("root")
 );

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useStore } from "store";
 
 import styles from "Editor/index.module.css";
 
 function Editor() {
+    const { noteStore } = useStore();
+
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -15,10 +18,11 @@ function Editor() {
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         alert("저장되었습니다!");
-        localStorage.setItem(
-            localStorage.length.toString(),
-            JSON.stringify({ title, content })
-        );
+
+        noteStore.addNote(title, content);
+
+        setTitle("");
+        setContent("");
     };
 
     return (

@@ -3,10 +3,18 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import Editor from "Editor";
+import RootStore from "store/RootStore";
+import { RootProvider } from "store";
 
 describe("Editor", () => {
     const setupTest = () => {
-        render(<Editor />);
+        const rootStore = new RootStore();
+
+        render(
+            <RootProvider value={rootStore}>
+                <Editor />
+            </RootProvider>
+        );
         const input = screen.getByLabelText(/제목/);
         const textarea = screen.getByLabelText(/내용/);
         const submit = screen.getByText(/저장/);
