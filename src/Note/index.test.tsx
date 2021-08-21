@@ -1,26 +1,27 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import App from "../App";
 import { RootProvider } from "store";
-import NoteList from "Sidebar/NoteList";
 import RootStore from "store/RootStore";
 import storageMock from "utils/storageMock";
-import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
-describe("NoteList", () => {
+describe("Note", () => {
     beforeAll(() => {
         storageMock();
     });
 
-    test("should render notelist", () => {
+    test("render note", () => {
         const rootStore = new RootStore();
 
         render(
             <RootProvider value={rootStore}>
-                <NoteList />
-            </RootProvider>,
-            { wrapper: MemoryRouter }
+                <App />
+            </RootProvider>
         );
 
-        screen.getAllByText(/Hello/);
+        userEvent.click(screen.getByText("Hello"));
+
+        expect(screen.getByText(/World/)).toBeInTheDocument();
     });
 });

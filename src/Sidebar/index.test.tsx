@@ -6,6 +6,7 @@ import Sidebar from "Sidebar";
 import storageMock from "utils/storageMock";
 import { RootProvider } from "store";
 import RootStore from "store/RootStore";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Sidebar", () => {
     beforeAll(() => {
@@ -18,7 +19,8 @@ describe("Sidebar", () => {
         render(
             <RootProvider value={rootStore}>
                 <Sidebar />
-            </RootProvider>
+            </RootProvider>,
+            { wrapper: MemoryRouter }
         );
 
         userEvent.type(screen.getByPlaceholderText(/검색/), "Hello");

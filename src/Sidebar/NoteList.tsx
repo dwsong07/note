@@ -11,7 +11,7 @@ function NoteList() {
     return (
         <>
             {filteredNotes.map(({ id, title }) => (
-                <NoteItem key={id} title={title} />
+                <NoteItem key={id} title={title} id={id} />
             ))}
         </>
     );
